@@ -74,10 +74,10 @@ if (!isset($_SESSION['user'])) {
 
             <?php if($_SESSION['user']['level'] == 'admin') : ?>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="?page=kategori" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="index.php?page=kategori" data-target="#collapseTwo">
                     <i class="fas fa-fw fa-star"></i>
                     <span>Kategori</span>
+                    <i class="fas fa-angle-right float-right mt-1"></i>
                 </a>
             </li>
             <?php endif; ?>
@@ -316,12 +316,16 @@ if (!isset($_SESSION['user'])) {
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-                    </div>
-
+                        <?php 
+                        if (!isset($_GET['page']) || $_GET['page'] == 'home') { 
+                        ?>
+                            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                                <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                            </div>
+                        <?php 
+                        } 
+                        ?>
+                        
                     <!-- Content Row -->
                     <div class="row">
 
@@ -367,7 +371,7 @@ if (!isset($_SESSION['user'])) {
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="logout.php">Logout</a>
                 </div>
             </div>
         </div>
